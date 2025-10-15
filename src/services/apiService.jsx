@@ -1,8 +1,9 @@
 import axios from 'axios';
 
 
-// Change this line back
-const API_BASE_URL = 'http://localhost:3344/api';
+// THIS IS THE FIX: We remove the fallback to localhost.
+// The Vercel build will now correctly use the variable you set in the dashboard.
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
