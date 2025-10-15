@@ -1,0 +1,38 @@
+.page-hero-section {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  
+  /* The Gradient Background */
+  background: linear-gradient(135deg, #4a4a4a, #1a1a1a);
+}
+
+.page-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* The golden accent underline */
+.page-hero-title::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 4px;
+  margin: 1rem auto 0;
+  background-color: #daa520; /* Golden color */
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .page-hero-title {
+    font-size: 2.2rem;
+  }
+}

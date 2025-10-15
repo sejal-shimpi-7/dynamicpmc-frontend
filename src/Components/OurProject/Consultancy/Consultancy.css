@@ -1,0 +1,27 @@
+/* Consultancy.css */
+
+/* Optional: basic page padding */
+.consultancy-page {
+  padding: 0;
+  margin: 0;
+}
+
+/* Hero section spacing (if needed) */
+.hero-section {
+  min-height: calc(100vh - 200px); /* adjust if you want full viewport */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Any additional ConHero content styling */
+.conhero-section {
+  padding: 20px;
+}
+
+/* Footer spacing */
+footer {
+  margin-top: 50px;
+}

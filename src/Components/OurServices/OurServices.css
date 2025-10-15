@@ -1,0 +1,108 @@
+.ourservices {
+  padding: 70px 8%;
+  background-color: #f5f5f5; /* subtle gray background */
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.ourservices-title {
+  font-size: 36px;
+  font-weight: 900;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  color: #100f0f; /* golden */
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 10px;
+}
+
+/* Golden underline below heading */
+.ourservices-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: #d32f2f; /* red underline */
+  margin: 12px auto 0 auto;
+  border-radius: 3px;
+}
+
+.ourservices-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* MORE SPACE between boxes */
+  flex-wrap: nowrap;
+  align-items: stretch;
+}
+
+.ourservices-card {
+  background: #fff;
+  border: 2px solid #d32f2f; /* red border */
+  padding: 35px 28px;
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover effect */
+.ourservices-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+  border-color: #b8860b; /* golden hover */
+}
+
+.ourservices-card h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #d32f2f; /* red heading */
+  border-bottom: 2px solid #b8860b; /* golden underline */
+  padding-bottom: 8px;
+}
+
+.ourservices-card p {
+  font-size: 15.5px;
+  color: #444;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  font-weight:500;
+}
+
+/* Highlighted keywords */
+.ourservices-card strong {
+  color: #d32f2f;
+  font-weight: 700;
+}
+
+/* Responsive for mobile */
+@media (max-width: 1000px) {
+  .ourservices-container {
+    flex-wrap: wrap;
+    gap: 25px; /* smaller gap on mobile */
+  }
+  .ourservices-card {
+    max-width: 100%;
+  }
+}
+.scroll-btn {
+  margin-top: 30px;
+  padding: 10px 18px;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.scroll-btn:hover {
+  background: #555;
+}

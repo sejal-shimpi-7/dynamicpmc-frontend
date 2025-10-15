@@ -1,0 +1,122 @@
+/* Main container */
+.we-deliver-container {
+  background-color: #ffffff; /* White background */
+  color: #1e1e1e;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Section Title */
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 900; /* Make it extra bold */
+  color: #000000; /* Black */
+  margin-bottom: 50px;
+  position: relative;
+}
+
+/* Red underline below title */
+.section-title::after {
+  content: "";
+  display: block;
+  margin: 10px auto 0;
+  width: 60px;
+  height: 4px;
+  background-color: #c8102e; /* Red */
+  border-radius: 2px;
+}
+
+/* Container holding the two service boxes */
+.services-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Container for icon + heading */
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+
+}
+
+/* Icon style */
+.box-icon {
+  color: #d4af37; /* Golden */
+  font-size: 24px;
+}
+
+/* Individual service box */
+.service-box {
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  background-color: #f9f9f9; /* Light gray */
+  padding: 25px;
+  border: 2px solid #d4af37; /* Golden border */
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+}
+
+/* Hover effect to lift the card */
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Headings inside each box */
+.service-box h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #d32f2f; /* red heading */
+  border-bottom: 2px solid #b8860b; /* golden underline */
+  padding-bottom: 8px;
+}
+
+/* List styling */
+.service-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight:400;
+}
+
+/* List items */
+.service-box li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+  color: #333333;
+  transition: color 0.2s ease;
+}
+
+/* Red bullet point */
+.service-box li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #c8102e;
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .service-box {
+    max-width: 100%;
+  }
+
+  .icon-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

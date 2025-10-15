@@ -1,0 +1,64 @@
+.interior-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.gallery-row {
+  display: flex; /* This is the key for side-by-side layout */
+  align-items: center;
+  gap: 30px;
+  
+  /* Animation starting state */
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Animation end state */
+.gallery-row.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-container {
+  flex: 1; /* Takes up half the space */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+}
+
+.description-container {
+  flex: 1; /* Takes up the other half */
+  padding: 0 20px;
+  transition-delay: 0.2s; /* Staggered animation effect */
+}
+
+.description-container p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Flips the order for the alternating effect */
+.gallery-row.image-right {
+  flex-direction: row-reverse;
+}
+
+/* On small screens, stack them vertically */
+@media (max-width: 768px) {
+  .gallery-row, .gallery-row.image-right {
+    flex-direction: column;
+  }
+  .description-container {
+    padding: 20px 0;
+  }
+}

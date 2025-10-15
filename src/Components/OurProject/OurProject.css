@@ -1,0 +1,89 @@
+/* Styling for the main section title */
+.projects-section h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  color: #333;
+  margin-bottom: 50px;
+  position: relative;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.projects-section h2::after {
+  content: "";
+  display: block;
+  margin: 10px auto 0;
+  width: 60px;
+  height: 4px;
+  background-color: #c8102e; /* Red underline for the main title */
+  border-radius: 2px;
+}
+
+.projects-section {
+  background-color: white;
+  padding: 50px 0;
+}
+
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Base style for the new card design */
+.project-card {
+  background-color: white;
+  border: 2px solid #c8102e; /* 1. Default border is now RED */
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  /* Add border-color to the transition for a smooth color change */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: #daa520; /* 2. Border becomes GOLDEN on hover */
+}
+
+/* Styling for the card title */
+.project-card h3 {
+  color: #c8102e; /* Red title */
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+/* Underline for the card title */
+.project-card h3::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: currentColor;
+  margin: 15px auto 25px;
+}
+
+/* Styling for the button */
+.explore-btn {
+  background: #1a1a1a;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.explore-btn:hover {
+  background: #333;
+  color: #1a1a1a;
+}

@@ -1,0 +1,101 @@
+.footer {
+  color: white;
+  font-family: Arial, sans-serif;
+  position: relative;
+  background: url("../../assets/footerbg.jpeg") no-repeat center center/cover;
+}
+
+/* Overlay darker for text clarity */
+.footer-overlay {
+  padding: 40px 60px;
+  background: rgba(0, 0, 0, 0.6); /* 👈 lighter overlay so house drawing shows */
+}
+
+
+.footer-top {
+  margin-bottom: 30px;
+  text-align: left;
+}
+
+.footer-top h2 {
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  color: #f5c542; /* gold heading */
+  border-left: 4px solid #d62c2c; /* red left line */
+  padding-left: 10px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+/* Column headings */
+.footer-col h3,
+.footer-col h4 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #d62c2c; /* red headings */
+}
+
+.footer-col p,
+.footer-col ul li {
+  margin: 6px 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #e6e6e6;
+}
+
+/* Links */
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li a {
+  text-decoration: none;
+  color: #e6e6e6;
+  font-size: 13px;
+  transition: color 0.3s;
+}
+
+.footer-col ul li a:hover {
+  color: #f5c542; /* gold hover */
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+}
+
+.social-icons i {
+  cursor: pointer;
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  background: #2b2b2b;
+  transition: all 0.3s;
+}
+
+.social-icons i:hover {
+  background: #d62c2c;
+  color: #fff;
+}
+
+.footer-copyright {
+  background-color: #000; /* Solid black for separation */
+  text-align: center;
+  padding: 15px 0;
+  border-top: 1px solid #333; /* A subtle line separator */
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #777;
+}

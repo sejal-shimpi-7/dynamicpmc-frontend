@@ -1,0 +1,43 @@
+/* Optional basic page styling */
+.interior-page {
+  margin: 0;
+  padding: 0;
+}
+
+/* Hero section spacing */
+.hero-section {
+  min-height: calc(100vh - 200px); /* adjust as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* Footer spacing */
+footer {
+  margin-top: 50px;
+}
+
+/* Gallery styling */
+.interior-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+.interior-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.interior-item img:hover {
+  transform: scale(1.05);
+}

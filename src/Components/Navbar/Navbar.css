@@ -1,0 +1,73 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 50px; /* More vertical padding for a premium feel */
+  
+  /* A subtle dark gradient for depth */
+  background: linear-gradient(to bottom, rgba(26, 26, 26, 0.9), rgba(40, 40, 40, 0.8));
+  backdrop-filter: blur(10px);
+  
+  /* A subtle golden line to separate the navbar from the content */
+  border-bottom: 1px solid rgba(218, 165, 32, 0.3); /* Faint golden border */
+  
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+/* NEW: Container for the brand text */
+.navbar-brand {
+  display: flex;
+  flex-direction: column; /* Stacks the text vertically */
+  line-height: 1.2; /* Adjusts the spacing between the two lines */
+  text-decoration: none;
+  margin-left:50px;
+}
+
+/* NEW: Style for the main word "Dynamic" */
+.brand-main {
+  font-size: 30px;
+  font-weight: 700; /* Bold */
+  color: #daa520; /* Golden color */
+  margin-left: 20px;
+}
+
+/* NEW: Style for the sub-text */
+.brand-sub {
+  font-size: 13px;
+  font-weight: 400;
+  color: #e0e0e0; /* A light grey for subtlety */
+  letter-spacing: 0.3px; /* Adds a bit of elegance */
+  text-transform: uppercase;
+  /* margin-left:3px; */
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  margin-right:50px;
+}
+
+.navbar-links li a {
+  text-decoration: none;
+  font-size: 15px;
+  color: #f0f0f0;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Golden hover effect */
+.navbar-links li a:hover,
+.navbar-links li a.active {
+  color: #daa520;
+  border-bottom-color: #daa520;
+}
