@@ -220,7 +220,14 @@ const AdminPage = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Description (optional)</Form.Label>
-              <Form.Control type="text" placeholder="Enter image description" value={imageDescription} onChange={(e) => setImageDescription(e.target.value)} />
+              {/* --- THIS IS THE ONLY CHANGE --- */}
+              <Form.Control 
+                as="textarea" 
+                rows={4} 
+                placeholder="Enter image description" 
+                value={imageDescription} 
+                onChange={(e) => setImageDescription(e.target.value)} 
+              />
             </Form.Group>
             <Button variant="primary" onClick={handleImageUpload}>Upload Image</Button>
             <hr />
