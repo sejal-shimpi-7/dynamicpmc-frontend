@@ -53,7 +53,7 @@ const ContactUs = () => {
           <div className="info-card">
             <span className="icon">✉️</span>
             <h3>
-              <a href="mailto:pratima@dynamicpmc.com">
+              <a href="mailto:admin@dynamicpmc.com">
                 admin@dynamicpmc.com   
               </a>
             </h3>
