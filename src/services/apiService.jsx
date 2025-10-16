@@ -39,6 +39,7 @@ export const createProject = (projectData) => apiClient.post('/projects', projec
 export const updateProject = (id, projectData) => apiClient.put(`/projects/${id}`, projectData);
 export const deleteProject = (id) => apiClient.delete(`/projects/${id}`);
 export const getImagesForProject = (projectId) => apiClient.get(`/project-images/project/${projectId}`);
+export const sendContactForm = (formData) => apiClient.post('/contact/send', formData);
 export const uploadProjectImage = (projectId, file, description) => {
     const formData = new FormData();
     formData.append('file', file);

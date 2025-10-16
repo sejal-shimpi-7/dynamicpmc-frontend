@@ -11,7 +11,7 @@ const Footer = () => {
       <div className="footer-overlay">
         <div className="footer-top">
           <h2>
-            <span className="highlight">Where Design Meets Descipline</span>
+            <span className="highlight">Where Design Meets Discipline</span>
           </h2>
         </div>
 
