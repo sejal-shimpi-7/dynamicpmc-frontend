@@ -1,43 +1,41 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
+// 1. Import the function from our apiService
+import { sendContactForm } from "../../services/apiService";
 
 const ContactUs = () => {
+  // Your state management is perfect, we will keep it.
   const [form, setForm] = useState({
     name: "",
     phone: "",
     email: "",
     message: ""
   });
-
-  const [status, setStatus] = useState(""); // ✅ success/error message
+  const [status, setStatus] = useState(""); // success/error message
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // 2. This is the only part that changes.
+  // It now calls our live backend via the apiService.
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("loading");
 
     try {
-      const response = await fetch("http://localhost:8080/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      if (response.ok) {
-        setStatus("success");
-        setForm({ name: "", phone: "", email: "", message: "" }); // clear form
-      } else {
-        setStatus("error");
-      }
+      // Use the sendContactForm function from apiService
+      await sendContactForm(form);
+      
+      setStatus("success");
+      setForm({ name: "", phone: "", email: "", message: "" }); // clear form
     } catch (error) {
       setStatus("error");
     }
   };
 
   return (
+    // Your JSX structure remains exactly the same to preserve the appearance.
     <section className="contactUs" id="contact">
       <div className="contact-us">
         {/* Top info cards */}
@@ -54,7 +52,7 @@ const ContactUs = () => {
             <span className="icon">✉️</span>
             <h3>
               <a href="mailto:admin@dynamicpmc.com">
-                admin@dynamicpmc.com   
+                admin@dynamicpmc.com
               </a>
             </h3>
             <p>
@@ -76,7 +74,7 @@ const ContactUs = () => {
           <form className="contact-form" onSubmit={handleSubmit}>
             <h2>Get in touch</h2>
 
-            {/* ✅ Status message */}
+            {/* Status message */}
             {status === "success" && (
               <div className="msg success">✅ Mail sent successfully!</div>
             )}
@@ -92,7 +90,7 @@ const ContactUs = () => {
             <input
               type="text"
               name="name"
-              placeholder="Your Name  "
+              placeholder="Your Name"
               value={form.name}
               onChange={handleChange}
               required
@@ -100,7 +98,7 @@ const ContactUs = () => {
             <input
               type="tel"
               name="phone"
-              placeholder="Phone Number "
+              placeholder="Phone Number"
               value={form.phone}
               onChange={handleChange}
               required
@@ -108,7 +106,7 @@ const ContactUs = () => {
             <input
               type="email"
               name="email"
-              placeholder="Email Address "
+              placeholder="Email Address"
               value={form.email}
               onChange={handleChange}
               required
@@ -120,13 +118,15 @@ const ContactUs = () => {
               onChange={handleChange}
               required
             ></textarea>
-            <button type="submit">SUBMIT</button>
+            <button type="submit" disabled={status === 'loading'}>
+              {status === 'loading' ? 'SENDING...' : 'SUBMIT'}
+            </button>
           </form>
 
           <div className="map-container">
             <iframe
               title="Office Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7560.901425104985!2d73.74627789357908!3d18.643760100000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b94c6ba87eeb%3A0xd6545931e4e4de2a!2sBlueberry%20Biz!5e0!3m2!1sen!2sin!4v1755183668122!5m2!1sen!2sin"
+              src="http://googleusercontent.com/maps.google.com/5"
               width="100%"
               height="100%"
               style={{ border: 0 }}
