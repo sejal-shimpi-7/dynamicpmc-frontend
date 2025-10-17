@@ -41,16 +41,18 @@ export const getImagesForProject = (projectId) => apiClient.get(`/project-images
 export const sendContactForm = (formData) => apiClient.post('/contact/send', formData);
 
 // --- THIS IS THE CORRECTED FUNCTION ---
-export const uploadProjectImage = (projectId, file, heading, description) => {
+export const uploadProjectImage = (projectId, file, description) => {
     const formData = new FormData();
     formData.append('file', file);
     // Add the heading to the form data
-    if(heading) formData.append('heading', heading); 
+    // if(heading) formData.append('heading', heading); 
     if(description) formData.append('description', description);
 
     return apiClient.post(`/project-images/upload/${projectId}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
     });
 };
+
+
 
 export const deleteProjectImage = (id) => apiClient.delete(`/project-images/${id}`);

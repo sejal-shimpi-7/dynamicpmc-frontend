@@ -213,7 +213,7 @@ const AdminPage = () => {
               <Form.Control id="image-file-input" type="file" onChange={(e) => setImageFile(e.target.files[0])} />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Description (optional)</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control 
                 as="textarea" 
                 rows={4} 
