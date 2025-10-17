@@ -49,7 +49,6 @@ export const uploadProjectImage = (projectId, file, description) => {
     if(description) formData.append('description', description);
 
     return apiClient.post(`/project-images/upload/${projectId}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' },
     });
 };
 
