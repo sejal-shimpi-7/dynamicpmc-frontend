@@ -29,10 +29,7 @@ const AdminPage = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const [projectsResponse, categoriesResponse] = await Promise.all([
-        getAllProjects(),
-        getAllCategories()
-      ]);
+      const [projectsResponse, categoriesResponse] = await Promise.all([ getAllProjects(), getAllCategories() ]);
       setProjects(projectsResponse.data);
       setCategories(categoriesResponse.data);
       setError('');
@@ -64,10 +61,7 @@ const AdminPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.category.id) {
-      alert("Please select a category.");
-      return;
-    }
+    if (!formData.category.id) return alert("Please select a category.");
     try {
       if (isEditing) {
         await updateProject(formData.id, formData);
@@ -220,7 +214,6 @@ const AdminPage = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Description (optional)</Form.Label>
-              {/* --- THIS IS THE ONLY CHANGE --- */}
               <Form.Control 
                 as="textarea" 
                 rows={4} 
@@ -249,5 +242,3 @@ const AdminPage = () => {
     </div>
   );
 };
-
-export default AdminPage;
