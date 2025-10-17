@@ -124,17 +124,17 @@ const ContactUs = () => {
           </form>
 
          <div className="map-container">
-  <iframe 
-    src="http://googleusercontent.com/maps.google.com/7"
-    width="100%" 
-    height="100%" 
-    style={{ border: 0 }} 
-    allowFullScreen="" 
-    loading="lazy" 
-    referrerPolicy="no-referrer-when-downgrade"
-    title="Blueberry Biz Location">
-  </iframe>
-</div>
+            <iframe
+              title="Office Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7560.901425104985!2d73.74627789357908!3d18.643760100000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b94c6ba87eeb%3A0xd6545931e4e4de2a!2sBlueberry%20Biz!5e0!3m2!1sen!2sin!4v1755183668122!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
         </div>
       </div>
     </section>
