@@ -40,6 +40,7 @@
   flex: 1; /* Takes up the other half */
   padding: 0 20px;
   transition-delay: 0.2s; /* Staggered animation effect */
+  white-space: pre-wrap;
 }
 
 .description-container p {

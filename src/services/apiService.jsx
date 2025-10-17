@@ -1,8 +1,6 @@
 import axios from 'axios';
 
-
-// THIS IS THE FIX: We remove the fallback to localhost.
-// The Vercel build will now correctly use the variable you set in the dashboard.
+// The Vercel build will correctly use the variable you set in the dashboard.
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const apiClient = axios.create({
@@ -25,27 +23,34 @@ apiClient.interceptors.request.use(
   }
 );
 
-// --- All your other API functions remain exactly the same ---
+// --- API Functions ---
 export const getAllCategories = () => apiClient.get('/categories');
 export const getCategoryById = (id) => apiClient.get(`/categories/${id}`);
-// ... etc.
 export const createCategory = (categoryData) => apiClient.post('/categories', categoryData);
 export const updateCategory = (id, categoryData) => apiClient.put(`/categories/${id}`, categoryData);
 export const deleteCategory = (id) => apiClient.delete(`/categories/${id}`);
+
 export const getAllProjects = () => apiClient.get('/projects');
 export const getProjectsByCategory = (categoryId) => apiClient.get(`/projects/category/${categoryId}`);
 export const getProjectById = (id) => apiClient.get(`/projects/${id}`);
 export const createProject = (projectData) => apiClient.post('/projects', projectData);
 export const updateProject = (id, projectData) => apiClient.put(`/projects/${id}`, projectData);
 export const deleteProject = (id) => apiClient.delete(`/projects/${id}`);
+
 export const getImagesForProject = (projectId) => apiClient.get(`/project-images/project/${projectId}`);
 export const sendContactForm = (formData) => apiClient.post('/contact/send', formData);
-export const uploadProjectImage = (projectId, file, description) => {
+
+// --- THIS IS THE CORRECTED FUNCTION ---
+export const uploadProjectImage = (projectId, file, heading, description) => {
     const formData = new FormData();
     formData.append('file', file);
+    // Add the heading to the form data
+    if(heading) formData.append('heading', heading); 
     if(description) formData.append('description', description);
+
     return apiClient.post(`/project-images/upload/${projectId}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
     });
 };
+
 export const deleteProjectImage = (id) => apiClient.delete(`/project-images/${id}`);
