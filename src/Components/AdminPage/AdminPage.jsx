@@ -227,7 +227,8 @@ const AdminPage = () => {
             <h5>Existing Images</h5>
             <div className="image-list">
               {projectImages.length > 0 ? projectImages.map(img => {
-                const imageUrl = img.imageUrl.startsWith('http') ? img.imageUrl : `http://localhost:3344${img.imageUrl}`;
+                // This works for both local and Cloudinary URLs
+                  const imageUrl = img.imageUrl;
                 return (
                   <div key={img.id} className="image-thumbnail">
                     <img src={imageUrl} alt={img.description} />
