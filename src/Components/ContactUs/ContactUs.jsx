@@ -1,140 +1,77 @@
 import React, { useState } from "react";
 import "./ContactUs.css";
-// 1. Import the function from our apiService
 import { sendContactForm } from "../../services/apiService";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'; // Import icons
 
 const ContactUs = () => {
-  // Your state management is perfect, we will keep it.
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: ""
-  });
-  const [status, setStatus] = useState(""); // success/error message
+  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
+  const [status, setStatus] = useState({ loading: false, success: false, error: false, message: '' });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleInputChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // 2. This is the only part that changes.
-  // It now calls our live backend via the apiService.
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus("loading");
-
+    setStatus({ loading: true, success: false, error: false, message: '' });
     try {
-      // Use the sendContactForm function from apiService
-      await sendContactForm(form);
-      
-      setStatus("success");
-      setForm({ name: "", phone: "", email: "", message: "" }); // clear form
-    } catch (error) {
-      setStatus("error");
+      await sendContactForm(formData);
+      setStatus({ loading: false, success: true, error: false, message: 'Your message has been sent successfully!' });
+      setFormData({ name: "", phone: "", email: "", message: "" });
+    } catch (err) {
+      setStatus({ loading: false, success: false, error: true, message: 'Failed to send message. Please try again.' });
     }
   };
 
   return (
-    // Your JSX structure remains exactly the same to preserve the appearance.
-    <section className="contactUs" id="contact">
-      <div className="contact-us">
-        {/* Top info cards */}
-        <div className="contact-info">
-          <div className="info-card">
-            <span className="icon">📞</span>
-            <h3>+91 9420426774</h3>
-            <p>
-              Give us a ring. Our Experts are standing by Monday to Friday from
-              10am to 6pm IST.
-            </p>
-          </div>
-          <div className="info-card">
-            <span className="icon">✉️</span>
-            <h3>
-              <a href="mailto:admin@dynamicpmc.com">
-                admin@dynamicpmc.com
-              </a>
-            </h3>
-            <p>
-              Simply drop us an email and you'll receive a reply within 24 hours.
-            </p>
-          </div>
-          <div className="info-card">
-            <span className="icon">📍</span>
-            <h3>Office address</h3>
-            <p>
-              Biz Blue Berry Business Center, Near D Y Patil College, Akurdi,
-              Ravet-412101
-            </p>
-          </div>
+    <section className="contact-page">
+      <div className="contact-info-grid">
+        <div className="info-card">
+          <FaPhone className="info-icon" />
+          <h3>+91 9420426774</h3>
+          <p>Give us a ring. Our Experts are standing by Monday to Friday from 10am to 6pm IST.</p>
         </div>
+        <div className="info-card">
+          <FaEnvelope className="info-icon" />
+          <h3><a href="mailto:admin@dynamicpmc.com">admin@dynamicpmc.com</a></h3>
+          <p>Simply drop us an email and you'll receive a reply within 24 hours.</p>
+        </div>
+        <div className="info-card">
+          <FaMapMarkerAlt className="info-icon" />
+          <h3>Office address</h3>
+          <p>BIZ Blue Berry Business Center, Near D Y Patil College, Akurdi, Ravet-412101</p>
+        </div>
+      </div>
 
-        {/* Form + Map */}
-        <div className="contact-main">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <h2>Get in touch</h2>
-
-            {/* Status message */}
-            {status === "success" && (
-              <div className="msg success">✅ Mail sent successfully!</div>
-            )}
-            {status === "error" && (
-              <div className="msg error">
-                ❌ Failed to send mail. Please try again.
-              </div>
-            )}
-            {status === "loading" && (
-              <div className="msg loading">⏳ Sending...</div>
-            )}
-
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Type your message"
-              value={form.message}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit" disabled={status === 'loading'}>
-              {status === 'loading' ? 'SENDING...' : 'SUBMIT'}
+      <div className="contact-main-grid">
+        <div className="contact-form-card">
+          <h2>Get in touch</h2>
+          <form onSubmit={handleSubmit}>
+            <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
+            <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
+            <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleInputChange} required />
+            <textarea name="message" placeholder="Type your message" value={formData.message} onChange={handleInputChange} required />
+            <button type="submit" disabled={status.loading}>
+              {status.loading ? 'Sending...' : 'SUBMIT'}
             </button>
           </form>
-
-          <div className="map-container">
-            <iframe
-              title="Office Location"
-              src="http://googleusercontent.com/maps.google.com/5"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
+          {status.message && (
+            <p className={`status-message ${status.success ? 'success' : 'error'}`}>
+              {status.message}
+            </p>
+          )}
+        </div>
+        <div className="map-container">
+          <iframe
+            src="http://googleusercontent.com/maps.google.com/7"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Office Location"
+          ></iframe>
         </div>
       </div>
     </section>
