@@ -216,7 +216,7 @@ const AdminPage = () => {
               <Form.Label>Description</Form.Label>
               <Form.Control 
                 as="textarea" 
-                rows={100} 
+                rows={25} 
                 placeholder="Enter image description" 
                 value={imageDescription} 
                 onChange={(e) => setImageDescription(e.target.value)} 
