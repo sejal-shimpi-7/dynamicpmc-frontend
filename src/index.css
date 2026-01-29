@@ -1,3 +1,15 @@
 :root{
     background-color: black;
 }
+
+/* =========================
+   GLOBAL MOBILE FIX
+   ========================= */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
